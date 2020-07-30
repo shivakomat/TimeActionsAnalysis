@@ -4,9 +4,11 @@ version := "0.1"
 
 scalaVersion := "2.12.2"
 
-val projectMainClass = "Main"
+val projectMainClass = "AppMain"
 
 mainClass in (Compile, run) := Some(projectMainClass)
+mainClass in assembly := Some(projectMainClass)
+
 
 // https://mvnrepository.com/artifact/org.scalatest/scalatest
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.0" % Test

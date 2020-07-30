@@ -5,7 +5,7 @@ object MeasureDailySavedJobs {
   var dailyFreqSavedJobs: Map[Long, Int] = Map()
 
   def addTo(action: TimedAction): Unit = {
-    if(action.accountAction == "SAVE_JOB") {
+    if(action.accountAction == SaveJob) {
       val dateInLong = (action.timeStamp.getYear + "" + action.timeStamp.getMonthOfYear + "" + action.timeStamp.getDayOfMonth).toLong
       if(dailyFreqSavedJobs.get(dateInLong).nonEmpty) dailyFreqSavedJobs += (dateInLong -> ((dailyFreqSavedJobs(dateInLong) + 1)))
       else dailyFreqSavedJobs += (dateInLong -> 1)

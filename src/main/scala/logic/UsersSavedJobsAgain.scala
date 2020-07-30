@@ -7,11 +7,11 @@ object UsersSavedJobsAgain {
   var userSavedJobsAgain = scala.collection.mutable.Seq.empty[TimedAction]
 
   def addTo(action: TimedAction): Unit = {
-    if(action.accountAction == "SAVE_JOB" && userUnsavedJobs.exists(j => j.jobId == action.jobId))
+    if(action.accountAction == SaveJob && userUnsavedJobs.exists(j => j.jobId == action.jobId))
       userSavedJobsAgain = userSavedJobsAgain ++ Seq(action)
-    else if(action.accountAction == "SAVE_JOB")
+    else if(action.accountAction == SaveJob)
       userSavedJobs = userSavedJobs ++ Seq(action)
-    else if(action.accountAction == "UNSAVE_JOB" && userSavedJobs.exists(j => j.jobId == action.jobId)
+    else if(action.accountAction == UnSaveJob && userSavedJobs.exists(j => j.jobId == action.jobId)
       && !userUnsavedJobs.exists(j => j.jobId == action.jobId))
       userUnsavedJobs = userUnsavedJobs ++ Seq(action)
   }
